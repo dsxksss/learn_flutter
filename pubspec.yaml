@@ -75,7 +75,6 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-
   # This section identifies your Flutter project as a module meant for
   # embedding in a native host app.  These identifiers should _not_ ordinarily
   # be changed after generation - they are used to ensure that the tooling can
@@ -84,5 +83,5 @@ flutter:
   # identifiers, which may be completely independent or the same as these.
   module:
     androidX: true
-    androidPackage: com.example.fluttercn_new
-    iosBundleIdentifier: com.example.fluttercnNew
+    androidPackage: com.example.learn_flutter
+    iosBundleIdentifier: com.example.learnFlutter

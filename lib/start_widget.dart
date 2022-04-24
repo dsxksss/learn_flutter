@@ -3,7 +3,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:fluttercn_new/question.dart';
+import './question.dart';
 
 //这里这个组件是用来表示有状态的内容
 //其功能就是检测其他组件里是否修改了功能
