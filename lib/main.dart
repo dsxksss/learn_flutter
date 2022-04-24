@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercn_new/myapp2.dart';
+import 'package:fluttercn_new/start_widget.dart';
 
-void main() => runApp(const MyApp2());
+void main() => runApp(const MyApp());
