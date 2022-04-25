@@ -3,6 +3,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:fluttercn_new/answer.dart';
 import './question.dart';
 
 //这里这个组件是用来表示有状态的内容
@@ -33,14 +34,23 @@ class _MyAppState extends State<MyApp> {
 
   //数组，或者列表
   var questions = [
-    "What's your favorite color?",
-    "What's your favorite animal?",
-    "What's your favorite foot?",
+    {
+      "questionText": "What's your favorite color?",
+      "answers": ["Red", "Green", "Black", "White"],
+    },
+    {
+      "questionText": "What's your favorite animal?",
+      "answers": ["Rabbit", "Snake", "Elphant", "Lion"],
+    },
+    {
+      "questionText": "What's your favorite food?",
+      "answers": ["noodle", "FriedChicken", "Dumplings", "Chocolates"],
+    },
   ];
 //自己随便写了点改变组件状态内容的功能
 //按下changeQuestion按钮之后修改的文字的功能
   void changeQuestion() {
-    if (_questionIndex <= 1) {
+    if (_questionIndex <= questions.length - 2) {
       //类似class类方法写的react内容
       //如果只修改值内容的话，是不能实时改变页面的
       //必须利用setState函数来修改内容
@@ -52,6 +62,10 @@ class _MyAppState extends State<MyApp> {
         _questionIndex = 0;
       });
     }
+  }
+
+  void choiceQuestion() {
+    //TODO:选择答案的功能，按下按钮后会记录已经按下的答案，并且进入到下一个问题
   }
 
   @override
@@ -69,34 +83,29 @@ class _MyAppState extends State<MyApp> {
           //body里放置的是这个页面里的主体内容
           body: Column(children: [
             //这里的 Question是另一个文件question.dart的自定义组件
-            Question(questions[_questionIndex]),
+            Question(questions[_questionIndex]["questionText"].toString()),
+            //这里利用了列表自动生成了四个答案button,类似reactMap方法
+            //...号是展开运算符，类似于JavaScript里的...展开语法,
+            //因为map返回的不是一个Widget类型,所以要展开再返回展开后获得的单个的值
+            //as List<String>是表示自己是一个包含了String类型的list，这么做的意义是让map明白
+            //因为这里面的map不确定你给它的列表是什么类型的列表，所以要主动告诉它类型
+            ...(questions[_questionIndex]["answers"] as List<String>)
+                //这里的question是这个列表里的每个值
+                .map((question) => Answer(
+                      //然后返回一个自定的Answer组件
+                      // ignore: avoid_print
+                      selectHandler: () => print("push Answer $question"),
+                      text: question,
+                    ))
+                .toList(),
             //按钮
-            RaisedButton(
-              //RaisedButton是一种弃用的方法，后续会使用更好的按钮创建方法
-              //child 一般用来增加显示内容
-              child: const Text("Answer 1"),
-              //onPressed 按下按钮后要进行的操作
-              //这里需要一个启动函数或者匿名函数(匿名函数一般用来运行带参数的函数使用)
-              onPressed: answerQuestion,
+            Answer(
+              selectHandler: changeQuestion,
+              color: Colors.greenAccent,
+              textcolor: Colors.white,
+              textsize: 20,
+              text: "ChangeAnswer",
             ),
-            RaisedButton(
-              child: const Text("Answer 2"),
-              //可以使用JavaScript的箭头运算符
-              //下面的ignore: avoid_print表示过滤编译器的一些检查警告
-              // ignore: avoid_print
-              onPressed: () => print("Answer 2"),
-            ),
-            RaisedButton(
-              child: const Text("Answer 3"),
-              onPressed: () {
-                //ignore: avoid_print
-                print("Answer 3");
-              }, //这是第三种匿名函数的使用方法
-            ),
-            RaisedButton(
-              child: const Text("changeQuestion"),
-              onPressed: changeQuestion,
-            )
           ]),
         ),
       );
