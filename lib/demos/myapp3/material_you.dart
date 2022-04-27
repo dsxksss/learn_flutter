@@ -38,7 +38,7 @@ class _MaterialYouState extends State<MaterialYou> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.greenAccent,
           foregroundColor: Colors.black,
           shadowColor: Colors.white,
           title: const Text("Flutter Mapp"),
@@ -51,16 +51,16 @@ class _MaterialYouState extends State<MaterialYou> {
             indicatorColor: Colors.white.withOpacity(0.5),
             labelTextStyle: MaterialStateProperty.all(
               const TextStyle(
-                fontSize: 12,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           child: NavigationBar(
-            backgroundColor: Colors.teal,
+            backgroundColor: Colors.greenAccent,
             animationDuration: const Duration(seconds: 1),
             labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-            height: 60,
+            height: 70,
             selectedIndex: _currentIndex,
             onDestinationSelected: (int newIndex) {
               setState(() {
