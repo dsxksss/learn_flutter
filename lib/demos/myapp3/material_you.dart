@@ -41,6 +41,7 @@ class _MaterialYouState extends State<MaterialYou> {
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
           shadowColor: Colors.white,
+          centerTitle: true,
           title: const Text("Flutter Mapp"),
         ),
         body: Center(
@@ -48,7 +49,7 @@ class _MaterialYouState extends State<MaterialYou> {
         ),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
-            indicatorColor: Colors.white.withOpacity(0.1),
+            indicatorColor: Colors.blue.withOpacity(0.1),
             labelTextStyle: MaterialStateProperty.all(
               const TextStyle(
                 fontSize: 16,
