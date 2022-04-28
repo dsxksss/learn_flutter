@@ -49,7 +49,7 @@ class _MaterialYouState extends State<MaterialYou> {
         ),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
-            indicatorColor: Colors.blue.withOpacity(0.1),
+            indicatorColor: Colors.blue.withOpacity(0.2),
             labelTextStyle: MaterialStateProperty.all(
               const TextStyle(
                 fontSize: 16,
@@ -62,7 +62,7 @@ class _MaterialYouState extends State<MaterialYou> {
             backgroundColor: Colors.black,
             animationDuration: const Duration(seconds: 1),
             labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-            height: 70,
+            height: 76,
             selectedIndex: _currentIndex,
             onDestinationSelected: (int newIndex) {
               setState(() {
@@ -73,6 +73,7 @@ class _MaterialYouState extends State<MaterialYou> {
               NavigationDestination(
                 selectedIcon: Icon(
                   Icons.eco,
+                  size: 28,
                   color: Colors.blueAccent,
                 ),
                 icon: Icon(
@@ -84,6 +85,7 @@ class _MaterialYouState extends State<MaterialYou> {
               NavigationDestination(
                 selectedIcon: Icon(
                   Icons.home,
+                  size: 28,
                   color: Colors.blueAccent,
                 ),
                 icon: Icon(
@@ -95,6 +97,7 @@ class _MaterialYouState extends State<MaterialYou> {
               NavigationDestination(
                 selectedIcon: Icon(
                   Icons.person,
+                  size: 28,
                   color: Colors.blueAccent,
                 ),
                 icon: Icon(
@@ -106,6 +109,7 @@ class _MaterialYouState extends State<MaterialYou> {
               NavigationDestination(
                 selectedIcon: Icon(
                   Icons.video_camera_back,
+                  size: 28,
                   color: Colors.blueAccent,
                 ),
                 icon: Icon(
