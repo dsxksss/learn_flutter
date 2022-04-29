@@ -1,43 +1,65 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "demo 2",
-      home: Homepage(),
+      title: "第二章基础内容:input相关",
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const FirstPage(),
     );
   }
 }
 
-class Homepage extends StatelessWidget {
-  const Homepage({Key? key}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("demo2"),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        shadowColor: Colors.black12,
+        title: const Text("input demo"),
       ),
-      body: const Homebody(),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            //页面切换的路由设置
+            Navigator.of(context).push(
+              //页面路由设置
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  //重渲染另一个页面元素
+                  return const SecondPage();
+                },
+              ),
+            );
+          },
+          child: const Text("Press"),
+        ),
+      ),
     );
   }
 }
 
-class Homebody extends StatelessWidget {
-  const Homebody({Key? key}) : super(key: key);
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.transparent,
-        child: Container(
-          height: 100,
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("SecondPage title"),
+      ),
+    );
   }
 }
