@@ -2,7 +2,7 @@
 //一个单独的Button组件
 import 'package:flutter/material.dart';
 
-class Answer extends StatelessWidget {
+class Answer extends StatefulWidget {
   final VoidCallback selectHandler;
   final String text;
   final Color color;
@@ -16,6 +16,12 @@ class Answer extends StatelessWidget {
       this.textcolor = Colors.black,
       this.textsize = 16})
       : super(key: key);
+
+  @override
+  State<Answer> createState() => _AnswerState();
+}
+
+class _AnswerState extends State<Answer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,16 +29,16 @@ class Answer extends StatelessWidget {
       //这里是设置了上下外边距为10个像素点
       margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
       width: double.infinity,
-      color: color,
+      color: widget.color,
       child: FlatButton(
         child: Text(
-          text,
+          widget.text,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: textcolor,
-              fontSize: textsize),
+              color: widget.textcolor,
+              fontSize: widget.textsize),
         ),
-        onPressed: selectHandler,
+        onPressed: widget.selectHandler,
       ),
     );
   }
